@@ -5,14 +5,19 @@ import java.util.Iterator;
 import java.util.Scanner;
 import java.util.Set;
 
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import com.student.DIContainer;
 import com.student.service.StudentService;
 
 public class SelectMajorAvgScoreController implements Controller {
 
 	@Override
 	public void execute(Scanner sc) {
+		AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(DIContainer.class);
+		StudentService service = (StudentService) ctx.getBean("service");
 		HashMap<String, Double> map = 
-				StudentService.getInstance().selectMajorAvgSocre();
+				service.selectMajorAvgSocre();
 		
 		Set<String> key = map.keySet();
 		

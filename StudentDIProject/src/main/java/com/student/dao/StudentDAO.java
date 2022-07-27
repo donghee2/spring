@@ -14,14 +14,9 @@ import com.student.vo.StudentVO;
 public class StudentDAO {
 	private DBManager manager;
 
-	public StudentDAO() {
-		AnnotationConfigApplicationContext ctx
-		= new AnnotationConfigApplicationContext(DBManager.class);
-		
-		DBManager manager = ctx.getBean("dbmanager", DBManager.class);
+	public StudentDAO(DBManager manager) {
 		this.manager = manager;
 	}
-
 
 	public StudentVO selectStudent(String sno) {
 		StudentVO vo = null;

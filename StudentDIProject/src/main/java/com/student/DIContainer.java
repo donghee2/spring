@@ -23,11 +23,12 @@ public class DIContainer {
 	
 	@Bean
 	public StudentDAO dao() {
-		return new StudentDAO();
+		return new StudentDAO(dbmanager());
 	}
 	
 	@Bean
 	public StudentService service() {
-		return new StudentService();
+		return new StudentService(dao());
 	}
+	
 }

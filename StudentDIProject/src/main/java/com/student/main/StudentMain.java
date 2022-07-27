@@ -2,6 +2,9 @@ package com.student.main;
 
 import java.util.Scanner;
 
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import com.student.DIContainer;
 import com.student.controller.Controller;
 import com.student.controller.HandlerMapping;
 import com.student.service.StudentService;
@@ -10,7 +13,8 @@ public class StudentMain {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-
+		AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(DIContainer.class);
+		HandlerMapping mapping = (HandlerMapping) ctx.getBean("handler");
 		while(true) {
 			//메뉴 출력
 			System.out.println("---- 학생정보관리 프로그램 ----");
@@ -31,7 +35,7 @@ public class StudentMain {
 				System.out.println("프로그램을 종료합니다.");
 				break;
 			}
-			Controller controller = HandlerMapping.getInstance().createController(no);
+			Controller controller = mapping.createController(no);
 			if(controller != null)
 				controller.execute(sc);
 		}
