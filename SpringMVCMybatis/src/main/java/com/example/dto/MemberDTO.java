@@ -1,5 +1,8 @@
 package com.example.dto;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("member")
 public class MemberDTO {
 	private String id;
 	private String passwd;
@@ -7,7 +10,6 @@ public class MemberDTO {
 	private int age;
 	private String gender;
 	private String address;
-	
 	
 	
 	public MemberDTO() {
