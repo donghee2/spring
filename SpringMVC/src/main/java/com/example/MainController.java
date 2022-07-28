@@ -9,10 +9,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class MainController {
+	private MainService service;
+	private PersonDTO person;
 	
+	public MainController(MainService service, PersonDTO person) {
+		this.service = service;
+		this.person = person;
+	}
+
 	@RequestMapping("/")
 	public String test() {
 		System.out.println("test()");
+		service.testService();
+		System.out.println(person.toString());
 		return "test";
 	}
 	
