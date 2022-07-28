@@ -6,4 +6,5 @@
    <select id="selectAllMember" resultType="member">
    		select * from member
    </select>
+   
 </mapper>

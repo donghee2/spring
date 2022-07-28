@@ -22,6 +22,7 @@ public class MainController {
 		// 전체 회원정보를 읽어와서 출력
 		List<MemberDTO> list = service.selectAllMember();
 		model.addAttribute("list", list);
+		System.out.println(list.size());
 		return "main";
 	}
 }
