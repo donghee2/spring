@@ -22,4 +22,14 @@ public class MainController {
 		request.setAttribute("test", "셋팅한 데이터");
 		return "result";
 	}
+	
+	@RequestMapping("/registerView.do")
+	public String registerView(HttpServletRequest request) {
+		String id = request.getParameter("id");
+		String pass = request.getParameter("pass");
+		String name = request.getParameter("name");
+		String age = request.getParameter("age");
+		return "register";
+	}
+	
 }
