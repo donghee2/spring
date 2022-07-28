@@ -3,6 +3,7 @@ package com.example;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -42,15 +43,19 @@ public class MainController {
 //		return null;
 //	}
 	
+//	@RequestMapping("/register.do")
+//	public String register(String id, String pass, String name, int age) {
+//		RegisterDTO dto = new RegisterDTO(id, pass, name, age);
+//		
+//		System.out.println(dto);
+//		return null;
+//	}
+
 	@RequestMapping("/register.do")
-	public String register(String id, String pass, String name, int age) {
-		
-		
-		System.out.println(id);
-		System.out.println(pass);
-		System.out.println(name);
-		System.out.println(age);
-		return null;
+	public String register(RegisterDTO dto, Model model) { 
+		System.out.println(dto);
+		model.addAttribute("dto", dto); 
+		return "register_result";
 	}
 }
 
