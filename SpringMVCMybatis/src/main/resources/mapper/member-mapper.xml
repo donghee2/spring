@@ -7,4 +7,7 @@
    		select * from member
    </select>
    
+   <insert id="insertMemberDTO" parameterType="member">
+   		insert into member values(#{id}, #{passwd}, #{name}, #{age}, #{gender}, #{address})
+   </insert>
 </mapper>

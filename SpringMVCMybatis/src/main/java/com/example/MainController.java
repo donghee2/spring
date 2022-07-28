@@ -25,4 +25,10 @@ public class MainController {
 		System.out.println(list.size());
 		return "main";
 	}
+	
+	@RequestMapping("register.do")
+	public String register(MemberDTO dto, Model model) {
+		service.insertMemberDTO(dto);
+		return main(model);
+	}
 }

@@ -17,6 +17,10 @@ public class MemberService {
 
 	public List<MemberDTO> selectAllMember() {
 		return mapper.selectAllMember();
+	}
+
+	public void insertMemberDTO(MemberDTO dto) {
+		mapper.insertMemberDTO(dto);
 	}	
 	
 }
