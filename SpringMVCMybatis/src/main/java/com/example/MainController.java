@@ -26,15 +26,31 @@ public class MainController {
 		return "main";
 	}
 	
-	@RequestMapping("register.do")
+	@RequestMapping("/register.do")
 	public String register(MemberDTO dto) {
 		service.insertMemberDTO(dto);
 		return "redirect:/";
 	}
 	
-	@RequestMapping("delete.do")
+	@RequestMapping("/delete.do")
 	public String delete(String id) {
 		service.deleteMember(id);
 		return "redirect:/";
 	}
+	
+	@RequestMapping("/updateView.do")
+	public String updeateView(String id, Model model) {
+		MemberDTO dto = service.selectMember(id);
+		model.addAttribute("dto", dto);
+		return "update_view";
+	}
+	
+	@RequestMapping("/update.do")
+	public String update(MemberDTO dto) {
+		service.updateMember(dto);
+		return "redirect:/";
+	}
+	
+	
+	
 }
