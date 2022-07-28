@@ -10,7 +10,7 @@
 <body>
 	<h1>회원관리</h1>
 	<hr>
-	<form action="register.do">
+	<form action="register.do" method="post">
 		<!-- 회원정보 등록 폼 -->
 		<input type="text" name="id" placeholder="아이디를 입력하세요"><br>
 		<input type="password" name="passwd" placeholder="암호를 입력하세요"><br>

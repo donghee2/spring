@@ -27,8 +27,8 @@ public class MainController {
 	}
 	
 	@RequestMapping("register.do")
-	public String register(MemberDTO dto, Model model) {
+	public String register(MemberDTO dto) {
 		service.insertMemberDTO(dto);
-		return main(model);
+		return "redirect:/";
 	}
 }

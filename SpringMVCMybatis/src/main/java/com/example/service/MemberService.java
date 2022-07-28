@@ -19,8 +19,8 @@ public class MemberService {
 		return mapper.selectAllMember();
 	}
 
-	public void insertMemberDTO(MemberDTO dto) {
-		mapper.insertMemberDTO(dto);
+	public int insertMemberDTO(MemberDTO dto) {
+		return mapper.insertMemberDTO(dto);
 	}	
 	
 }

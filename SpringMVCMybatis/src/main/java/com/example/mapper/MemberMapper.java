@@ -11,6 +11,6 @@ public interface MemberMapper {
 
 	List<MemberDTO> selectAllMember();
 
-	void insertMemberDTO(MemberDTO dto);
+	int insertMemberDTO(MemberDTO dto);
 	
 }
