@@ -175,31 +175,24 @@ public class MainController {
 	}
 	
 	@RequestMapping("/fileDown.do")
-	public void fileDown(int bno, int fno, HttpServletResponse response) {
+	public void fileDown(int bno, int fno, HttpServletResponse response) throws IOException {
 		String path = boardService.selectFile(bno, fno);
 		File file = new File(path);
 		response.setHeader("Content-Disposition", "attachement;fileName="+file.getName());
 		response.setHeader("Content-Transfer-Encoding", "binary");
 		response.setContentLength((int) file.length());
 		
-		FileInputStream fis;
-		try {
-			fis = new FileInputStream(file);
-			BufferedOutputStream bos = new BufferedOutputStream(response.getOutputStream());
-			byte[] buffer = new byte[1024*1024];
-			while(true) {
-				int size = fis.read(buffer);
-				if(size == -1) break;
-				bos.write(buffer, 0, size);
-				bos.flush();
-			}
-			bos.close();
-			fis.close();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
+		FileInputStream fis = new FileInputStream(file);
+		BufferedOutputStream bos = new BufferedOutputStream(response.getOutputStream());
+		byte[] buffer = new byte[1024*1024];
+		while(true) {
+			int size = fis.read(buffer);
+			if(size == -1) break;
+			bos.write(buffer, 0, size);
+			bos.flush();
 		}
+		bos.close();
+		fis.close();
 	}
 }
 
