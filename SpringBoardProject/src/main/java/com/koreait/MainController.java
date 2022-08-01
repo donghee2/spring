@@ -133,6 +133,17 @@ public class MainController {
 		}
 	}
 	
+	@RequestMapping("/boardWriteView.do")
+	public String boardWriteView() {
+		return "board_write_view";
+	}
+	
+	@RequestMapping("/boardWrite.do")
+	public String boardWrite(BoardDTO dto) {
+		int bno = boardService.inserBoard(dto);
+		// 파일 업로드
+		return "redirect:/boardView.do?bno=" + bno;
+	}
 }
 
 

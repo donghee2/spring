@@ -24,5 +24,7 @@ public interface BoardMapper {
 	int deleteBoardLike(Map<String, Object> map);
 	int insertBoardHate(Map<String, Object> map);
 	int deleteBoardHate(Map<String, Object> map);
+	int selectBoardNo();
+	int insertBoard(BoardDTO dto);
 
 }

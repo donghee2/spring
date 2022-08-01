@@ -76,7 +76,14 @@ public class BoardService {
 		}
 		return result;
 	}
-	
+
+	public int inserBoard(BoardDTO dto) {
+		int bno = mapper.selectBoardNo(); // 게시글 번호 받아옴
+		dto.setBno(bno); // dto에 게시글 번호 셋팅
+		mapper.insertBoard(dto); // 게시글 등록
+		return bno;
+	}
+
 	
 }
 
