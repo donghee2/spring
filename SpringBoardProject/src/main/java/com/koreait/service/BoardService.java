@@ -88,6 +88,13 @@ public class BoardService {
 		return mapper.insertFileList(fileDTO);
 	}
 
+	public String selectFile(int bno, int fno) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("bno", bno);
+		map.put("fno", fno);
+		return mapper.selectFile(map);
+	}
+
 	
 }
 

@@ -68,6 +68,10 @@
  		insert into board_file(bno, fno, path)
  		values(#{bno}, #{fno}, #{path})
  	</insert>
+ 	
+ 	<select id="selectFile" parameterType="map" resultType="String">
+ 		select path from board_file where bno = #{bno} and fno = #{fno}
+ 	</select>
 </mapper>
 
 

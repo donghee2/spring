@@ -27,5 +27,6 @@ public interface BoardMapper {
 	int selectBoardNo();
 	int insertBoard(BoardDTO dto);
 	int insertFileList(FileDTO fileDTO);
+	String selectFile(Map<String, Object> map);
 
 }
