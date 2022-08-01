@@ -84,6 +84,10 @@ public class BoardService {
 		return bno;
 	}
 
+	public int insertFileList(FileDTO fileDTO) {
+		return mapper.insertFileList(fileDTO);
+	}
+
 	
 }
 

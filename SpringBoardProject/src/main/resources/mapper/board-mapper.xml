@@ -63,6 +63,11 @@
  		insert into board(bno, title, writer, bcount, content)
  		values(#{bno}, #{title}, #{writer}, 0, #{content})
  	</insert>
+ 	
+ 	<insert id="insertFileList" parameterType="file">
+ 		insert into board_file(bno, fno, path)
+ 		values(#{bno}, #{fno}, #{path})
+ 	</insert>
 </mapper>
 
 

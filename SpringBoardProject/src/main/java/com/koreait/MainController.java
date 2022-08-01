@@ -12,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.koreait.dto.BoardCommentDTO;
 import com.koreait.dto.BoardDTO;
@@ -139,9 +141,30 @@ public class MainController {
 	}
 	
 	@RequestMapping("/boardWrite.do")
-	public String boardWrite(BoardDTO dto) {
+	public String boardWrite(BoardDTO dto, MultipartHttpServletRequest request) {
 		int bno = boardService.inserBoard(dto);
 		// 파일 업로드
+		// 저장할 경로
+		String root = "c:\\flieUpload\\";
+		File userRoot = new File(root);
+		if(!userRoot.exists()) {
+			userRoot.mkdir();
+		}
+		
+		List<MultipartFile> fileList = request.getFiles("file");
+		int i = 1;
+		for(MultipartFile f : fileList) {
+			String originalFileName = f.getOriginalFilename();
+			if(f.getSize() == 0) continue;
+			File uploadFile = new File(root + "\\" + originalFileName);
+			boardService.insertFileList(new FileDTO(uploadFile, bno, i));
+			i++;
+			try {
+				f.transferTo(uploadFile); // 실제로 전송
+			} catch (IllegalStateException | IOException e) {
+				e.printStackTrace();
+			} 
+		}
 		return "redirect:/boardView.do?bno=" + bno;
 	}
 }
