@@ -142,6 +142,7 @@ public class MainController {
 	
 	@RequestMapping("/boardWrite.do")
 	public String boardWrite(BoardDTO dto, MultipartHttpServletRequest request) {
+		// 게시물 작성
 		int bno = boardService.inserBoard(dto);
 		// 파일 업로드
 		// 저장할 경로
