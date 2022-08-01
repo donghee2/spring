@@ -40,6 +40,14 @@ public class BoardService {
 	public int addBoardCount(int bno) {
 		return mapper.addBoardCount(bno);
 	}
+
+	public int deleteBoard(int bno) {
+		return mapper.deleteBoard(bno);
+	}
+
+	public int insertBoardComment(BoardCommentDTO dto) {
+		return mapper.addBoardComment(dto);
+	}
 	
 	
 }

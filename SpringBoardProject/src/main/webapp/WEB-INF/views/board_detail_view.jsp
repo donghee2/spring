@@ -144,19 +144,14 @@
 				data : d,
 				method : "get",
 				success:function(result){
-					result = result.trim();
-					if(result == "false"){
-						alert("로그인후 이용하실 수 있습니다.");
-						location.href="${pageContext.request.contextPath}/loginView.do";
+					var msg = "이 게시물에다가";
+					msg += idx == 0 ? "좋아요를 " : "싫어요를 ";
+					msg += result == 1 ? "하셨습니다." : "취소하셨습니다.";
+					alert(msg);
+					location.reload();
 					}
 					console.log(result, result.length);
 					$(obj).children("span").html(result);
-					
-				},
-				error : function(request, status, error) {
-					alert(request.responseText.trim());
-					location.href="${pageContext.request.contextPath}/loginView.do";
-					
 				}
 			});
 		});

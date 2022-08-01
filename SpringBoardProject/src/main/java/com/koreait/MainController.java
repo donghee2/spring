@@ -1,8 +1,11 @@
 package com.koreait;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -81,15 +84,35 @@ public class MainController {
 		}
 	}
 	
-	@RequestMapping("/boardDelete.do")
-	public String boardDelete(int dno) {
+	@RequestMapping("/deleteBoard.do")
+	public String boardDelete(int bno) {
 		// 파일 삭제
 		// 파일 삭제 목록을 불러옴
-		List<FileDTO> list = boardService.selectFileList(dno);
+		List<FileDTO> list = boardService.selectFileList(bno);
+		for(int i=0;i<list.size();i++) {
+			File file = new File(list.get(i).getPath()); // 전체 경로 받는 부분
+			try {
+				if(file.delete()) {
+					System.out.println("파일 삭제 성공");
+				}
+			} catch(Exception e) {
+				System.out.println(e.getMessage());
+			}
+		}
 		// 게시글 삭제
+		boardService.deleteBoard(bno);
 		return "redirect:/";
 	}
-	
+	@RequestMapping("/insertComment.do")
+	public void insertComment(int bno, String writer, String content, HttpServletResponse response) {
+		BoardCommentDTO dto = new BoardCommentDTO(bno, content, writer);
+		int result = boardService.insertBoardComment(dto);
+		try {
+			response.getWriter().write(String.valueOf(result));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 	
 }
 
