@@ -1,6 +1,7 @@
 package com.koreait.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -19,5 +20,7 @@ public interface BoardMapper {
 	int addBoardCount(int bno);
 	int deleteBoard(int bno);
 	int addBoardComment(BoardCommentDTO dto);
+	int insertBoardLike(Map<String, Object> map);
+	void deleteBoardLike(Map<String, Object> map);
 
 }

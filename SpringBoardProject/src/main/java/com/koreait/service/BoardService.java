@@ -1,6 +1,8 @@
 package com.koreait.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
@@ -47,6 +49,19 @@ public class BoardService {
 
 	public int insertBoardComment(BoardCommentDTO dto) {
 		return mapper.addBoardComment(dto);
+	}
+
+	public int insertBoardLike(int bno, String id) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("bno", bno);
+		map.put("id", id);
+		int result = 0;
+		try {
+			result = mapper.insertBoardLike(map);			
+		} catch (Exception e) {
+			mapper.deleteBoardLike(map);						
+		}
+		return result;
 	}
 	
 	

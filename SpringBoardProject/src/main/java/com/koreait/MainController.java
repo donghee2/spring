@@ -114,6 +114,24 @@ public class MainController {
 		}
 	}
 	
+	@RequestMapping("/plusLikeHate.do")
+	public void plusLikeHate(int bno, int mode, HttpSession session, HttpServletResponse response) {
+		String id =  (String) session.getAttribute("id");
+		int result = 0;
+		if(mode == 0) {
+			// 좋아요
+			result = boardService.insertBoardLike(bno, id);
+		} else {
+			// 싫어요
+			
+		}
+		try {
+			response.getWriter().write(String.valueOf(result));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 }
 
 
