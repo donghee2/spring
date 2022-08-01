@@ -63,6 +63,19 @@ public class BoardService {
 		}
 		return result;
 	}
+
+	public int insertBoardHate(int bno, String id) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("bno", bno);
+		map.put("id", id);
+		int result = 0;
+		try {
+			result = mapper.insertBoardHate(map);			
+		} catch (Exception e) {
+			mapper.deleteBoardHate(map);						
+		}
+		return result;
+	}
 	
 	
 }

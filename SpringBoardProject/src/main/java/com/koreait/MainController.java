@@ -115,15 +115,16 @@ public class MainController {
 	}
 	
 	@RequestMapping("/plusLikeHate.do")
-	public void plusLikeHate(int bno, int mode, HttpSession session, HttpServletResponse response) {
-		String id =  (String) session.getAttribute("id");
+	public void plusLikeHate(int bno, int mode, 
+			HttpSession session, HttpServletResponse response) {
 		int result = 0;
+		String id = (String) session.getAttribute("id");
 		if(mode == 0) {
-			// 좋아요
-			result = boardService.insertBoardLike(bno, id);
-		} else {
-			// 싫어요
-			
+			//좋아요
+			result = boardService.insertBoardLike(bno,id);
+		}else {
+			//싫어요
+			result = boardService.insertBoardHate(bno, id);
 		}
 		try {
 			response.getWriter().write(String.valueOf(result));

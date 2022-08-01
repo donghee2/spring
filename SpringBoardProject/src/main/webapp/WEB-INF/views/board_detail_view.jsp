@@ -138,7 +138,8 @@
 			// 0 - like, 1 - hate
 			// bno;
 			var obj = $(this);
-			d = "bno=${requestScope.board.bno}&mode="+$(this).index();
+			var idx = $(this).index();
+			d = "bno=${requestScope.board.bno}&mode="+idx;
 			$.ajax({
 				url : "plusLikeHate.do",
 				data : d,
@@ -148,10 +149,7 @@
 					msg += idx == 0 ? "좋아요를 " : "싫어요를 ";
 					msg += result == 1 ? "하셨습니다." : "취소하셨습니다.";
 					alert(msg);
-					location.reload();
-					}
-					console.log(result, result.length);
-					$(obj).children("span").html(result);
+					location.reload();					
 				}
 			});
 		});
@@ -226,7 +224,7 @@
 						<a href="#" class="btn_like">
 							<img src="${pageContext.request.contextPath }/img/like.png" class="hate">
 							<!-- 싫어요 개수 -->
-							<span>${requestScope.board.bLike }</span>
+							<span>${requestScope.board.bHate}</span>
 						</a>
 					</td>
 				</tr>
