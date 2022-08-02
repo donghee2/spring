@@ -11,4 +11,6 @@ public interface MemberMapper {
 
 	MemberDTO login(Map<String, Object> map);
 
+	int insertMember(MemberDTO dto);
+
 }

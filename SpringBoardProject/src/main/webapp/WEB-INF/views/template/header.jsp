@@ -105,7 +105,7 @@
 <nav id="menu_bar">
 	<ul>
 		<li><a href="main.do">HOME</a></li>
-		<li><a href="register.jsp">회원가입</a></li>
+		<li><a href="registerView.do">회원가입</a></li>
 		<li><a href="loginView.do">로그인</a></li>
 		<li><a href="#">문의하기</a></li>
 	</ul>

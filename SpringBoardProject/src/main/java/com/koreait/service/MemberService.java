@@ -22,6 +22,10 @@ public class MemberService {
 		map.put("passwd", passwd);
 		return mapper.login(map);
 	}
+
+	public int insertMember(MemberDTO dto) {
+		return mapper.insertMember(dto);
+	}
 	
 	
 }

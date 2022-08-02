@@ -7,6 +7,10 @@
 		select id, passwd, name, nick, grade_no as grade 
 		from board_member where id = #{id} and passwd = #{passwd}
 	</select>
+	
+	<insert id="insertMember" parameterType="member">
+		insert into board_member values(#{id}, #{passwd}, #{name}, #{nick}, 1)
+	</insert>
 </mapper>
 
 

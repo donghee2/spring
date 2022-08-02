@@ -51,6 +51,11 @@ public class MainController {
 
 		return "main";
 	}
+	
+	@RequestMapping("/main.do")
+	public String main() {
+		return "redirect:/";
+	}
 
 	@RequestMapping("/boardView.do")
 	public String boardView(int bno, Model model, HttpSession session) {
@@ -194,6 +199,18 @@ public class MainController {
 		bos.close();
 		fis.close();
 	}
+	
+	@RequestMapping("/registerView.do")
+	public String registerView() {
+		return "register";
+	}
+	
+	@RequestMapping("/register.do")
+	public String register(MemberDTO dto) {
+		memberService.insertMember(dto);
+		return "redirect:/";
+	}
+	
 }
 
 
