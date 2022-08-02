@@ -38,11 +38,7 @@
 			});
 		});
 		$(".btnDelete").click(function(){
-			var arr = $(this).parent().parent().find("input");
-			var d = "";
-			$.each(arr,function(i,obj){
-				d += $(obj).attr("name") + "=" + $(obj).val() + "&";
-			});
+			var d = "id="+ $(this).parent().parent().find("input[name=id]").val();
 			$.ajax({
 				url:"memberDelete.do",
 				data : d,

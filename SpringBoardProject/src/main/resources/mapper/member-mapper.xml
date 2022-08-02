@@ -15,6 +15,10 @@
 	<select id="selectAllMember" resultType="member">
 		select id, passwd, name, nick, grade_no as gradeNo from board_member
 	</select>
+	
+	<delete id="deleteMember" parameterType="String">
+		delete from board_member where id = #{id}
+	</delete>
 </mapper>
 
 

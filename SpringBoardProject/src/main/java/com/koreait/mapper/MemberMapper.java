@@ -16,4 +16,6 @@ public interface MemberMapper {
 
 	List<MemberDTO> selectAllMember();
 
+	int deleteMember(String id);
+
 }

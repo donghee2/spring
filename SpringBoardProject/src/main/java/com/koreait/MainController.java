@@ -225,6 +225,12 @@ public class MainController {
 		return "member_manager";
 	}
 	
+	@RequestMapping("/memberDelete.do")
+	public void memberDelete(String id,HttpServletResponse response) throws IOException {
+		System.out.println(id);
+		int result = memberService.deleteMember(id);
+		response.getWriter().write(String.valueOf(result));
+	}
 }
 
 
