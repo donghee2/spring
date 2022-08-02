@@ -69,13 +69,13 @@
 						tag += '<td><input type="text" name="gradeNo" value="'+r[i].gradeNo+'"></td>';
 						tag += '<td><button type="button" class="btnUpdate">수정</button>';
 						tag += '<button type="button" class="btnDelete">삭제</button>';
-						tag += "</td>"
-						tag += "</tr>"
+						tag += "</td>";
+						tag += "</tr>";
 					}
+					$("tbody").html(tag);
 				}
-				
-			})
-		})
+			});
+		});
 	});	
 </script>
 </head>
@@ -91,6 +91,7 @@
 		<input type="text" name="search"><button>검색</button>
 	</form>
 	<table>
+	<thead>
 	<tr>
 		<th>아이디</th>
 		<th>암호</th>
@@ -99,6 +100,8 @@
 		<th>등급</th>
 		<th>비고</th>
 	</tr>
+	</thead>
+	<tbody>
 	<!-- 전체 회원 목록을 출력 -->
 	<c:forEach var="obj" items="${requestScope.list }">
 		<tr>
@@ -114,6 +117,7 @@
 		</tr>
 		
 	</c:forEach>
+	</tbody>
 	</table>
 	</div>
 	<jsp:include page="template/footer.jsp" flush="false"></jsp:include>
