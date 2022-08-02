@@ -20,5 +20,7 @@ public interface MemberMapper {
 
 	int updateMember(MemberDTO dto);
 
+	List<MemberDTO> selectMember(Map<String, Object> map);
+
 
 }

@@ -40,6 +40,16 @@ public class MemberService {
 		return mapper.updateMember(dto);
 	}
 
+	public List<MemberDTO> selectMember(String kind, String search) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("kind", kind);
+		if(kind.equals("grade"))
+			map.put("search", Integer.parseInt(search));
+		else
+			map.put("search", search);
+		return mapper.selectMember(map);
+	}
+
 
 	
 	
