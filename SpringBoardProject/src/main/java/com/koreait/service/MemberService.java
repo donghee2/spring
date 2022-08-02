@@ -35,6 +35,12 @@ public class MemberService {
 	public int deleteMember(String id) {
 		return mapper.deleteMember(id);
 	}
+
+	public int updateMember(MemberDTO dto) {
+		return mapper.updateMember(dto);
+	}
+
+
 	
 	
 }

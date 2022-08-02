@@ -19,6 +19,10 @@
 	<delete id="deleteMember" parameterType="String">
 		delete from board_member where id = #{id}
 	</delete>
+	
+	<update id="updateMember" parameterType="member">
+		update board_member set passwd = #{passwd}, name = #{name}, nick = #{nick}, grade_no = #{gradeNo} where id = #{id}
+	</update>
 </mapper>
 
 

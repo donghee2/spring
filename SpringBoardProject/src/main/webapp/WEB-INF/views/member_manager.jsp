@@ -74,7 +74,7 @@
 		<td><input type="text" name="passwd" value="${obj.passwd }"></td>
 		<td><input type="text" name="name" value="${obj.name }"></td>
 		<td><input type="text" name="nick" value="${obj.nick }"></td>
-		<td><input type="text" name="grade" value="${obj.gradeNo }"></td>
+		<td><input type="text" name="gradeNo" value="${obj.gradeNo }"></td>
 		<td><button type="button" class="btnUpdate">수정</button>
 		<button type="button" class="btnDelete">삭제</button>
 		<!-- 삭제 및 수정 처리 Ajax로 삭제 처리 -->

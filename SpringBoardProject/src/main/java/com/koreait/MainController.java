@@ -231,6 +231,13 @@ public class MainController {
 		int result = memberService.deleteMember(id);
 		response.getWriter().write(String.valueOf(result));
 	}
+	
+	@RequestMapping("memberUpdate.do")
+	public void memberUpdate(MemberDTO dto, HttpServletResponse response) throws IOException {
+		System.out.println(dto);
+		int result = memberService.updateMember(dto);
+		response.getWriter().write(String.valueOf(result));
+	}
 }
 
 
