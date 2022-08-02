@@ -37,8 +37,7 @@ public class EmployeeSearchMain {
 		try {
 			URL url = new URL(apiUrl);
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-			BufferedReader br = 
-					new BufferedReader(new InputStreamReader(conn.getInputStream()));
+			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 			
 			String result = "";
 			while(true) {
