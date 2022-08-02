@@ -12,4 +12,6 @@ public interface EmployeeMapper {
 
 	List<EmployeeDTO> searchEmployee(Map<String, Object> map);
 
+	List<EmployeeDTO> selectAllEmployee();
+
 }

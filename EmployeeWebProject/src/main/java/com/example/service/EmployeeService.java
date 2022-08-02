@@ -20,8 +20,15 @@ public class EmployeeService {
 	public List<EmployeeDTO> searchEmployee(String kind, String search) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("kind", kind);
-		map.put("search", search);
+		if(kind.equals("position"))
+			map.put("search", Integer.parseInt(search));
+		else
+			map.put("search", search);
 		return mapper.searchEmployee(map);
+	}
+
+	public List<EmployeeDTO> selectAllEmployee(String kind, String search) {
+		return mapper.selectAllEmployee();
 	}
 	
 	
