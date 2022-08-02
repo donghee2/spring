@@ -58,6 +58,14 @@
 <body>
 	<jsp:include page="template/header.jsp" flush="false"></jsp:include>
 	<div class="result">
+	<form id="frm_search">
+		<select name="kind">
+			<option value="id">아이디</option>
+			<option value="name">이름</option>
+			<option value="grade">등급</option>
+		</select>
+		<input type="text" name="search"><button>검색</button>
+	</form>
 	<table>
 	<tr>
 		<th>아이디</th>
