@@ -1,6 +1,7 @@
 package com.koreait.service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Service;
@@ -25,6 +26,10 @@ public class MemberService {
 
 	public int insertMember(MemberDTO dto) {
 		return mapper.insertMember(dto);
+	}
+
+	public List<MemberDTO> selectAllMember() {
+		return mapper.selectAllMember();
 	}
 	
 	

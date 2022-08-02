@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -94,6 +95,12 @@ public class MainController {
 			session.setAttribute("login", false);
 			return "login";
 		}
+	}
+	
+	@RequestMapping("/logout.do")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/";
 	}
 	
 	@RequestMapping("/deleteBoard.do")
@@ -209,6 +216,13 @@ public class MainController {
 	public String register(MemberDTO dto) {
 		memberService.insertMember(dto);
 		return "redirect:/";
+	}
+	
+	@RequestMapping("/memberManageView.do")
+	public String memberManageView(Model model) {
+		List<MemberDTO> list = memberService.selectAllMember();
+		model.addAttribute("list", list);
+		return "member_manager";
 	}
 	
 }
