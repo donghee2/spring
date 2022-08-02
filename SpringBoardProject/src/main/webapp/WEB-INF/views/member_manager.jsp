@@ -100,7 +100,7 @@
 		<input type="text" name="search"><button type="button" class="btn_search">검색</button>
 	</form>
 	<table>
-	<thead class="search_result">
+	<thead>
 	<tr>
 		<th>아이디</th>
 		<th>암호</th>
@@ -110,7 +110,7 @@
 		<th>비고</th>
 	</tr>
 	</thead>
-	<tbody>
+	<tbody class="search_result">
 	<!-- 전체 회원 목록을 출력 -->
 	<c:forEach var="obj" items="${requestScope.list }">
 		<tr>
