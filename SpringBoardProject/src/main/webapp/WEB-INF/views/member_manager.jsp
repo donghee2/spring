@@ -52,6 +52,30 @@
 				}
 			});
 		});
+		$(".btn_search").click(function() {
+			var d = $(this).parent().parent().serialize();
+			$.ajax({
+				url:"memberSearch.do",
+				data: d,
+				dataType: "json",
+				success:function(r){
+					var tag = "";
+					for(i=0;i<r.length;i++) {
+						tag += "<tr>";
+						tag += '<td><input type="text" name="id" value="'+r[i].id+'" readonly></td>';
+						tag += '<td><input type="text" name="passwd" value="'+r[i].passwd+'"></td>';
+						tag += '<td><input type="text" name="name" value="'+r[i].name+'"></td>';
+						tag += '<td><input type="text" name="nick" value="'+r[i].+nick'"></td>';
+						tag += '<td><input type="text" name="gradeNo" value="'+r[i].gradeNo+'"></td>';
+						tag += '<td><button type="button" class="btnUpdate">수정</button>';
+						tag += '<button type="button" class="btnDelete">삭제</button>';
+						tag += "</td>"
+						tag += "</tr>"
+					}
+				}
+				
+			})
+		})
 	});	
 </script>
 </head>
