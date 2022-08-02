@@ -17,7 +17,7 @@
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-	$(function(){
+	function add_event_update(){
 		$(".btnUpdate").click(function(){
 			var arr = $(this).parent().parent().find("input");
 			var d = "";
@@ -37,6 +37,8 @@
 				}
 			});
 		});
+	}
+	function add_event_delete(){
 		$(".btnDelete").click(function(){
 			var d = "id="+ $(this).parent().parent().find("input[name=id]").val();
 			$.ajax({
@@ -52,31 +54,38 @@
 				}
 			});
 		});
+	}
+		
+	$(function(){
+		add_event_update();
+		add_event_delete();
 		$(".btn_search").click(function() {
-			var d = $(this).parent().parent().serialize();
+			var d = $(this).parent().serialize();
 			$.ajax({
 				url:"memberSearch.do",
-				data: d,
-				dataType: "json",
+				data : d,
+				dataType:"json",
 				success:function(r){
 					var tag = "";
-					for(i=0;i<r.length;i++) {
+					for(i=0;i<r.length;i++){
 						tag += "<tr>";
 						tag += '<td><input type="text" name="id" value="'+r[i].id+'" readonly></td>';
 						tag += '<td><input type="text" name="passwd" value="'+r[i].passwd+'"></td>';
 						tag += '<td><input type="text" name="name" value="'+r[i].name+'"></td>';
-						tag += '<td><input type="text" name="nick" value="'+r[i].+nick'"></td>';
+						tag += '<td><input type="text" name="nick" value="'+r[i].nick+'"></td>';
 						tag += '<td><input type="text" name="gradeNo" value="'+r[i].gradeNo+'"></td>';
 						tag += '<td><button type="button" class="btnUpdate">수정</button>';
 						tag += '<button type="button" class="btnDelete">삭제</button>';
-						tag += "</td>";
-						tag += "</tr>";
+						tag += '</td>';
+						tag += '</tr>';
 					}
-					$("tbody").html(tag);
+					$(".search_result").html(tag);
+					add_event_update();
+					add_event_delete();
 				}
 			});
 		});
-	});	
+	});
 </script>
 </head>
 <body>
@@ -88,10 +97,10 @@
 			<option value="name">이름</option>
 			<option value="grade">등급</option>
 		</select>
-		<input type="text" name="search"><button>검색</button>
+		<input type="text" name="search"><button type="button" class="btn_search">검색</button>
 	</form>
 	<table>
-	<thead>
+	<thead class="search_result">
 	<tr>
 		<th>아이디</th>
 		<th>암호</th>
