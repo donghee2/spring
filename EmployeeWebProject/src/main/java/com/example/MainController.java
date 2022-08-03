@@ -51,7 +51,7 @@ public class MainController {
 		JSONObject obj = new JSONObject();
 		if(list.size() == 0) {
 			obj.put("code", 500);
-			obj.put("message", "조회된 데디터가 없습니다.");
+			obj.put("message", "조회된 데이터가 없습니다.");
 			obj.put("result", "none");
 		}else {
 			obj.put("code", 200);
