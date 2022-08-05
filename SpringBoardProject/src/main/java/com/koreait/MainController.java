@@ -323,6 +323,13 @@ public class MainController {
 		bos.close();
 		fis.close();
 	}
+	
+	@RequestMapping("/qnaView.do")
+	public String qnaView() {
+		return "qna";
+	}
+	
+	
 }
 
 
