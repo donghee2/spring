@@ -265,6 +265,10 @@
 						${comment.cdate }
 						<a href="commentLike.do?cno=${comment.cno }&bno=${board.bno}">${comment.clike }</a>
 						<a href="commentHate.do?cno=${comment.cno }&bno=${board.bno}">${comment.chate }</a>
+						<!-- 댓글 삭제하는 링크 deleteComment.do 댓글 번호를 기준으로 삭제-->
+						<c:if test="${sessionScope.id == comment.writer || sessionScope.grade == 6 }">
+							<a href="deleteComment.do?cno=${comment.cno }&bno=${board.bno}">댓글 삭제</a>
+						</c:if>
 						</p>
 						<p>
 							${comment.content }

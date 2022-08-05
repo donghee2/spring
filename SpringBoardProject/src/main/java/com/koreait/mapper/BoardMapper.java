@@ -28,5 +28,13 @@ public interface BoardMapper {
 	int insertBoard(BoardDTO dto);
 	int insertFileList(FileDTO fileDTO);
 	String selectFile(Map<String, Object> map);
+	int deleteBoardComment(int cno);
+	int insertBoardCommentLike(Map<String, Object> map);
+	int deleteBoardCommentLike(Map<String, Object> map);
+	int insertBoardCommentHate(Map<String, Object> map);
+	int deleteBoardCommentHate(Map<String, Object> map);
+	int selectBoardImageNo();
+	int insertBoardImage(Map<String, Object> map);
+	String selectImageFile(int fno);
 
 }

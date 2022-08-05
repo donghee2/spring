@@ -95,7 +95,44 @@ public class BoardService {
 		return mapper.selectFile(map);
 	}
 
+	public int deleteBoardComment(int cno) {
+		return mapper.deleteBoardComment(cno);
+	}
 	
+	public void insertBoardCommentLike(int cno, String writer) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("cno", cno);
+		map.put("writer", writer);
+		try {
+			mapper.insertBoardCommentLike(map);
+		} catch (Exception e) {
+			mapper.deleteBoardCommentLike(map);
+		}
+	}
+	
+	public void insertBoardCommentHate(int cno, String writer) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("cno", cno);
+		map.put("writer", writer);
+		try {
+			mapper.insertBoardCommentHate(map);
+		} catch (Exception e) {
+			mapper.deleteBoardCommentHate(map);
+		}
+	}
+	
+	public int uploadImage(String path) {
+		int fno = mapper.selectBoardImageNo();
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("path",path);
+		map.put("fno",fno);
+		mapper.insertBoardImage(map);
+		return fno; 
+	}
+
+	public String selectImageFile(int fno) {
+		return mapper.selectImageFile(fno);
+	}
 }
 
 
