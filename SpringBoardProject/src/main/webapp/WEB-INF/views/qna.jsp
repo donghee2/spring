@@ -69,6 +69,30 @@
 		top:1px;
 	}
 </style>
+<script type="text/javascript">
+	$(function() {
+		$(".qna_form form").submit(function() {
+			var title = $("input[name=title]").val();
+			var content = $("textarea[name=content]").val();
+			console.log(title, content);
+			var result = true;
+			if(title.length == 0) {
+				alert("문의 제목을 입력하세요");
+				result = false;
+			} else if(title.length > 33) {
+				alert("문의 제목은 33글자까지만 입력하세요");
+				result = false;
+			} else if(content.length == 0) {
+				alert("문의 내용을 입력하세요");
+				result = false;
+			} else if(content.length > 1333) {
+				alert("문의 내용은 1333글자까지만 입력하세요");
+				result = false;
+			}
+			return result;
+		});
+	});
+</script>
 </head>
 <body>
 	<jsp:include page="template/header.jsp" flush="false"></jsp:include>

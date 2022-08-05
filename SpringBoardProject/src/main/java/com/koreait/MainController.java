@@ -26,18 +26,24 @@ import com.koreait.dto.BoardCommentDTO;
 import com.koreait.dto.BoardDTO;
 import com.koreait.dto.FileDTO;
 import com.koreait.dto.MemberDTO;
+import com.koreait.dto.QnADTO;
 import com.koreait.service.BoardService;
 import com.koreait.service.MemberService;
+import com.koreait.service.QnAService;
 import com.koreait.vo.PaggingVO;
 
 @Controller
 public class MainController {
 	private BoardService boardService;
 	private MemberService memberService;
+	private QnAService qnaService;
+	
 
-	public MainController(BoardService boardService, MemberService memberService) {
+	public MainController(BoardService boardService, MemberService memberService, QnAService qnaService) {
+		super();
 		this.boardService = boardService;
 		this.memberService = memberService;
+		this.qnaService = qnaService;
 	}
 
 	@RequestMapping("/")
@@ -329,6 +335,12 @@ public class MainController {
 		return "qna";
 	}
 	
+	@RequestMapping("/sendQnA.do")
+	public String sendQnA(QnADTO dto, HttpSession session) {
+		dto.setWirter((String) session.getAttribute("id"));
+		qnaService.insertQnA(dto);
+		return "redirect:/qnaView.do";
+	}
 	
 }
 

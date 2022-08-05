@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.koreait.dto.BoardCommentDTO;
 import com.koreait.dto.BoardDTO;
 import com.koreait.dto.FileDTO;
+import com.koreait.dto.QnADTO;
 import com.koreait.mapper.BoardMapper;
 
 @Service
@@ -133,6 +134,7 @@ public class BoardService {
 	public String selectImageFile(int fno) {
 		return mapper.selectImageFile(fno);
 	}
+
 }
 
 

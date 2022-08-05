@@ -103,7 +103,8 @@
 	
 	<select id="selectImageFile" parameterType="int" resultType="String">
 		select path from board_image where bi_no = #{fno}
-	</select>	
+	</select>
+	
 </mapper>
 
 
