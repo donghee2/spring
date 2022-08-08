@@ -47,11 +47,11 @@ public class QnADTO {
 		this.wdate = wdate;
 	}
 
-	public String getWirter() {
+	public String getWriter() {
 		return writer;
 	}
 
-	public void setWirter(String writer) {
+	public void setWriter(String writer) {
 		this.writer = writer;
 	}
 

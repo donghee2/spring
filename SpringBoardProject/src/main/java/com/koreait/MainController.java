@@ -7,11 +7,13 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import org.json.JSONObject;
 import org.springframework.http.ResponseEntity;
@@ -331,17 +333,41 @@ public class MainController {
 	}
 	
 	@RequestMapping("/qnaView.do")
-	public String qnaView() {
+	public String qnaView(HttpSession session, Model model) {
+		int page = 1;
+		String writer = (String) session.getAttribute("id");
+		if(writer == null)
+			return "redirect:/loginView.do";
+
+		List<QnADTO> list = qnaService.selectQnaList(writer,page);
+		model.addAttribute("list", list);
 		return "qna";
 	}
 	
 	@RequestMapping("/sendQnA.do")
 	public String sendQnA(QnADTO dto, HttpSession session) {
-		dto.setWirter((String) session.getAttribute("id"));
+		dto.setWriter((String) session.getAttribute("id"));
 		qnaService.insertQnA(dto);
 		return "redirect:/qnaView.do";
 	}
 	
+	@RequestMapping("/nextQnaList.do")
+	public ResponseEntity<HashMap<String, Object>> nextQnaList(int page, HttpSession session) {
+		// 1. 아이디값 읽어옴
+		String writer = (String) session.getAttribute("id");
+		// 2. 해당 페이지 목록을 읽어옴 List<QnADTO>
+		List<QnADTO> list = qnaService.selectQnaList(writer, page);
+		// 3. 다음 페이지 목록 읽어옴
+		int nextPage = 0;
+		if(!qnaService.selectQnaList(writer, nextPage+1).isEmpty())
+			nextPage = page+1;
+		// 4. HashMap에 리스트와 다음페이지 번호를 저장
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("nextPage", nextPage);
+		map.put("list", list);
+		// 5. map에 있는 내용을 리턴
+		return ResponseEntity.ok(map);
+	}
 }
 
 
