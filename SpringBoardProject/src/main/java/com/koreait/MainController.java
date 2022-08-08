@@ -383,6 +383,8 @@ public class MainController {
 	@RequestMapping("/adminQnaDetailView.do")
 	public String adminQnaDetailView(int qno, Model model) {
 		QnADTO dto = qnaService.selectQna(qno);
+		dto.setContent(dto.getContent().replaceAll("\n", "<br>"));
+		dto.setResponse(dto.getResponse().replaceAll("\n", "<br>"));
 		if(dto.getStatus() == 0)
 			qnaService.updateStatusView(qno);
 		model.addAttribute("dto", dto);
@@ -390,7 +392,11 @@ public class MainController {
 	}
 	
 	@RequestMapping("/answer.do")
-	public String answer(int qno, String response) {
+	public String answer(int qno, String response, HttpSession session) {
+		String id = (String) session.getAttribute("id");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		
+		response = "답변자 : " + id + "작성일 : " + sdf.format(Calendar.getInstance().getTime()) + "\n" + response;
 		qnaService.updateResponse(qno, response);
 		qnaService.updateStatus(qno);
 		return "redirect:/adminQnaDetailView.do?qno=" + qno;

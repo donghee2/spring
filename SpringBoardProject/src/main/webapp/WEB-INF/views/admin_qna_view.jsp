@@ -75,7 +75,10 @@
 	</h3>
 	<div>
 		<p>문의내용</p>
-		<p class="qna_content">${requestScope.dto.content }</p>
+		<p class="qna_content">${requestScope.dto.content }<hr>
+			답변내용<br>
+			${requestScope.dto.response }
+		</p>
 	</div>
 	<hr>
 	<div class="qna_form">
