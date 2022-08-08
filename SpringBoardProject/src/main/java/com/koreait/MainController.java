@@ -379,6 +379,24 @@ public class MainController {
 		model.addAttribute("page", vo);
 		return "admin_qna";
 	}
+	
+	@RequestMapping("/adminQnaDetailView.do")
+	public String adminQnaDetailView(int qno, Model model) {
+		QnADTO dto = qnaService.selectQna(qno);
+		if(dto.getStatus() == 0)
+			qnaService.updateStatusView(qno);
+		model.addAttribute("dto", dto);
+		return "admin_qna_view";
+	}
+	
+	@RequestMapping("/answer.do")
+	public String answer(int qno, String response) {
+		qnaService.updateResponse(qno, response);
+		qnaService.updateStatus(qno);
+		return "redirect:/adminQnaDetailView.do?qno=" + qno;
+	}
+	
+	
 }
 
 

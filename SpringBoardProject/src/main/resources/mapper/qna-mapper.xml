@@ -27,7 +27,23 @@
 		select count(*) from qna
 	</select>
 	
-</mapper>
+	<select id="selectQna" parameterType="int" resultType="qna">
+		select * from qna where qno = #{qno}
+	</select>
+	
+	<update id="updateResponse" parameterType="map">
+		update qna set response = #{response} where qno = #{qno}
+	</update>
+	
+	<update id="updateStatus" parameterType="int">
+		update qna set status = 2 where qno = #{qno}
+	</update>
+	
+	<update id="updateStatusView" parameterType="int">
+		update qna set status = 1 where qno = #{qno}
+	</update>
+	
+</mapper> 
 
 
 

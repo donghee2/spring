@@ -36,6 +36,25 @@ public class QnAService {
 	public int selectCount() {
 		return mapper.selectCount();
 	}
+
+	public QnADTO selectQna(int qno) {
+		return mapper.selectQna(qno);
+	}
+
+	public int updateResponse(int qno, String response) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("qno", qno);
+		map.put("response", response);
+		return mapper.updateResponse(map);
+	}
+
+	public int updateStatus(int qno) {
+		return mapper.updateStatus(qno);
+	}
+
+	public int updateStatusView(int qno) {
+		return mapper.updateStatusView(qno);
+	}
 	
 	
 }
