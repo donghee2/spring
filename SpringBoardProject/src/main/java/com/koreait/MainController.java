@@ -372,7 +372,7 @@ public class MainController {
 	
 	@RequestMapping("/qnaAdminView.do")
 	public String qnaAdminView(@RequestParam(name = "pageNo", defaultValue = "1") int page, Model model) {
-		List<QnADTO> list = qnaService.selectQnaAdmin	List(page);
+		List<QnADTO> list = qnaService.selectQnaAdminList(page);
 		int count = qnaService.selectCount();
 		PaggingVO vo = new PaggingVO(count, page, 5, 5);
 		model.addAttribute("list", list);
