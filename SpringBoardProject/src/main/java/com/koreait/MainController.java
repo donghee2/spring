@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.websocket.Session;
 
+import org.apache.ibatis.annotations.Param;
 import org.json.JSONObject;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -367,6 +368,16 @@ public class MainController {
 		map.put("list", list);
 		// 5. map에 있는 내용을 리턴
 		return ResponseEntity.ok(map);
+	}
+	
+	@RequestMapping("/qnaAdminView.do")
+	public String qnaAdminView(@RequestParam(name = "pageNo", defaultValue = "1") int page, Model model) {
+		List<QnADTO> list = qnaService.selectQnaAdmin	List(page);
+		int count = qnaService.selectCount();
+		PaggingVO vo = new PaggingVO(count, page, 5, 5);
+		model.addAttribute("list", list);
+		model.addAttribute("page", vo);
+		return "admin_qna";
 	}
 }
 

@@ -28,6 +28,14 @@ public class QnAService {
 		map.put("page", page);		
 		return mapper.selectQnaList(map);
 	}
+
+	public List<QnADTO> selectQnaAdminList(int page) {
+		return mapper.selectQnaAdminList(page);
+	}
+
+	public int selectCount() {
+		return mapper.selectCount();
+	}
 	
 	
 }
