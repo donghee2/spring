@@ -43,6 +43,7 @@ public class MainController {
 		
 		response.setContentType("text/html;charset=utf-8");
 		response.getWriter().write(obj.toString());
+		System.out.println(list.toString());
 	}
 	
 	@RequestMapping("all.do")
