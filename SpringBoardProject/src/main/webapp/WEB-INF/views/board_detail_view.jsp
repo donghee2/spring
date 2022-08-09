@@ -41,7 +41,7 @@
 	.btn{
 		text-decoration: none;
 		background-color: #e8e8e8;
-		width: 80px;
+		min-width: 80px;
 		display: inline-block;
 		padding:5px 0px;
 		font-weight:normal;
@@ -243,7 +243,7 @@
 						</div>
 					</td>
 				</tr>
-					</c:if>
+				</c:if>
 				<tr>
 					<th><a href="/main.do" class="btn">목록보기</a></t	h>
 					<td style="text-align: right;">
@@ -251,9 +251,22 @@
 						<a href="boardUpdateView.do" class="btn">수정</a>
 						<a href="deleteBoard.do?bno=${requestScope.board.bno }" class="btn">삭제</a>
 					</c:if>
-						<a href="#" class="btn">이전글</a>
-						<a href="#" class="btn">다음글</a>
-						
+					<c:choose>
+						<c:when test="${requestScope.other.BEFORE != -1 }">
+							<a href="boardView.do?bno=${requestScope.other.BEFORE }" class="btn">이전글</a>
+						</c:when>
+						<c:otherwise>
+							<a class="btn">이전글이 없습니다.</a>
+						</c:otherwise>
+					</c:choose>
+					<c:choose>
+						<c:when test="${requestScope.other.NEXT != -1 }">
+							<a href="boardView.do?bno=${requestScope.other.NEXT }" class="btn">다음글</a>
+						</c:when>
+						<c:otherwise>
+							<a class="btn">다음글이 없습니다.</a>
+						</c:otherwise>
+					</c:choose>
 					</td>
 				</tr>
 				<tr>
