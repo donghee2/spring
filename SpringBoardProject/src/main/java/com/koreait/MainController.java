@@ -10,6 +10,7 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -73,6 +74,8 @@ public class MainController {
 		BoardDTO dto = boardService.selectBoardDTO(bno);
 		List<FileDTO> flist = boardService.selectFileList(bno);
 		List<BoardCommentDTO> comment = boardService.selectCommentDTO(bno);
+		Map<String, Object> map = boardService.selectNextBefore(bno);
+		System.out.println(map);
 		// 게시글 조회수 증가
 		HashSet<Integer> set = (HashSet<Integer>) session.getAttribute("bno_history");
 		if (set == null)
@@ -84,6 +87,7 @@ public class MainController {
 		model.addAttribute("board", dto);
 		model.addAttribute("flist", flist);
 		model.addAttribute("comment", comment);
+		model.addAttribute("other", map);
 		return "board_detail_view";
 	}
 

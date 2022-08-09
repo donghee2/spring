@@ -36,5 +36,6 @@ public interface BoardMapper {
 	int selectBoardImageNo();
 	int insertBoardImage(Map<String, Object> map);
 	String selectImageFile(int fno);
+	Map<String, Object> selectNextBefore(int bno);
 
 }

@@ -135,6 +135,10 @@ public class BoardService {
 		return mapper.selectImageFile(fno);
 	}
 
+	public Map<String, Object> selectNextBefore(int bno) {
+		return mapper.selectNextBefore(bno);
+	}
+
 }
 
 

@@ -105,6 +105,11 @@
 		select path from board_image where bi_no = #{fno}
 	</select>
 	
+	<select id="selectNextBefore" parameterType="int" resultType="map">
+		select next, before from (select nvl(lag(bno) over (order by bno desc), -1) as next,
+		nvl(lead(bno) over (order by bno desc), -1) as before,
+		bv.* from board_view bv) where bno = #{bno}
+	</select>
 </mapper>
 
 
